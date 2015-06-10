@@ -1,2 +1,7 @@
 # a-text-based-game
-A simple text based game - where will it go?
+A simple ES6 text based game - where will it go?
+
+#Get Started
+npm install -g babel
+
+./start.sh
