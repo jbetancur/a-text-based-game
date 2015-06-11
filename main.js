@@ -35,11 +35,11 @@ function attack(attacker, defender) {
     damage += attacker.dmgMod;
     display(`${attacker.name} (${attacker.hp} hp) hits ${defender.name} (${defender.hp} hp) for ${damage} points of damage. ${defender.name} is reduced to ${defender.hp - damage} hp`);
     process.stdout.write('\x07');
-    delaySync(500);
+    delaySync(1000);
     return damage;
   } else {
     display(`${attacker.name} misses ${defender.name}!`);
-    delaySync(500);
+    delaySync(1000);
     return 0;
   }
 }
@@ -78,6 +78,7 @@ function play(player1, player2) {
 }
 
 function initGame() {
+  //Hacky way to copy object
   player1 = JSON.parse(JSON.stringify(player1Template));
   player2 = JSON.parse(JSON.stringify(player2Template));;
 
@@ -90,4 +91,4 @@ process.stdin.on('data', function (chunk) {
   chunk.indexOf('y') > -1 || chunk.indexOf('Y') > -1 ? initGame() : process.exit(0);
 });
 
-initGame();
+process.stdout.write('Ready to for a Fight? (y/n) ');
